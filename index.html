@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Birthday Letter For You</title>
+  <meta name="description" content="An interactive birthday letter with flowers, butterflies and surprises.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="floaters" class="layer" aria-hidden="true"></div>
+  <div id="butterflyLayer" class="layer" aria-hidden="true"></div>
+
+    <div class="music-player" role="group" aria-label="Background music">
+    <button type="button" class="icon-btn" id="musicToggle" aria-label="Play music"><span id="musicIcon" aria-hidden="true">▶</span></button>
+    <button type="button" class="icon-btn" id="muteToggle" aria-label="Mute music" aria-pressed="false"><span id="muteIcon" aria-hidden="true">🔊</span></button>
+    <label class="volume">
+      <span class="visually-hidden">Music volume</span>
+      <input type="range" id="volume" min="0" max="1" step="0.05" value="0.6">
+    </label>
+    <p class="music-status visually-hidden" id="musicStatus" role="status">Music is off</p>
+  </div>
+
+    <header class="hero" id="top">
+    <span class="sparkle s1" aria-hidden="true">✦</span>
+    <span class="sparkle s2" aria-hidden="true">✧</span>
+    <span class="sparkle s3" aria-hidden="true">✦</span>
+    <span class="sparkle s4" aria-hidden="true">✧</span>
+    <p class="eyebrow">A little surprise for you</p>
+    <h1>Happy Birthday, <span data-bind="recipient"></span>! <span aria-hidden="true">🎂</span></h1>
+    <p class="intro" data-bind="intro"></p>
+  </header>
+
+  <main>
+        <section class="section envelope-section" id="envelopeSection" aria-labelledby="envHeading">
+      <h2 class="section-title" id="envHeading">A letter is waiting for you</h2>
+      <p class="hint">Tap a flower to release a butterfly. 🦋</p>
+      <div class="reveal-stage" id="revealStage">
+                <div class="letter-scene" id="letterScene" role="region" aria-label="Your birthday letter" hidden>
+          <h2 class="visually-hidden" id="letterHeading" tabindex="-1">Your birthday letter</h2>
+          <div class="polaroid-col" id="photosLeft"></div>
+          <article class="letter-card" id="letterCard">
+            <p class="letter-to">To: <span data-bind="recipient"></span></p>
+            <p class="letter-body" id="letterBody"></p>
+          </article>
+          <div class="polaroid-col" id="photosRight"></div>
+        </div>
+                <div class="envelope-bed">
+          <div class="garden garden-side" id="gardenLeft" role="group" aria-label="Flower garden, left side"></div>
+          <div class="envelope-stage">
+            <button type="button" class="envelope" id="envelope"
+                    aria-expanded="false" aria-controls="letterScene"
+                    aria-label="Envelope. Activate to open your letter.">
+              <span class="env-back"></span>
+              <span class="env-paper"><span class="env-lines"></span></span>
+              <span class="env-front"></span>
+              <span class="env-flap"></span>
+              <span class="env-seal" aria-hidden="true">♥</span>
+            </button>
+          </div>
+          <div class="garden garden-side" id="gardenRight" role="group" aria-label="Flower garden, right side"></div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" id="openBtn">Open Your Letter</button>
+      <div class="btn-row" id="letterBtns" hidden>
+        <button type="button" class="btn btn-primary" id="skipBtn" disabled>Show Full Letter</button>
+        <button type="button" class="btn" id="replayBtn">↻ Replay Typing</button>
+        <button type="button" class="btn btn-ghost" id="closeEnvBtn">Close Envelope</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Made with 💜</p>
+  </footer>
+
+    <audio id="bgMusic" loop preload="none"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
